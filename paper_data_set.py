@@ -3,7 +3,7 @@ import glob
 from PIL import Image
 import jsonlines
 import os
-import tqdm
+from tqdm import tqdm
 
 class PaperDataSet(Dataset):
     def __init__(self, overall_image_path, transform=None):
@@ -15,7 +15,8 @@ class PaperDataSet(Dataset):
         with jsonlines.open("iclr21_forum_rating.jsonl") as read_file:
             for line in read_file.iter():
                 rating_dict[line['forum']] = line['review_rating']
-        for one_file_image_path in tqdm(os.listdir(overall_image_path), desc="make data set"):
+        input_paths = os.listdir(overall_image_path)
+        for one_file_image_path in tqdm(input_paths, desc="make data set"):
             image_path = overall_image_path + one_file_image_path + "/"
             before_add_size = len(self.image_list)
             self.image_list.extend(glob.glob(image_path + "*.jpg")) # glob: 폴더 내의 파일 찾아줌
