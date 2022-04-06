@@ -28,11 +28,14 @@ def download_iclr21(client, outdir='./'):
 
     # os.makedirs(outdir)
     for forum_metadata in tqdm(metadata, desc='getting pdfs'):
-        pdf_binary = client.get_pdf(forum_metadata['forum'])
-        pdf_outfile = os.path.join(outdir, '{}.pdf'.format(forum_metadata['forum']))
-        with open(pdf_outfile, 'wb') as file_handle:
-            file_handle.write(pdf_binary)
-
+        try:
+            pdf_binary = client.get_pdf(forum_metadata['forum'])
+            pdf_outfile = os.path.join(outdir, '{}.pdf'.format(forum_metadata['forum']))
+            with open(pdf_outfile, 'wb') as file_handle:
+                file_handle.write(pdf_binary)
+        except:
+            print("[error] forum:", forum_metadata['forum'])
+# [error] forum: _qJXkf347k
 
 def crawl_iclr_2021(pdf_path):
     client = openreview.Client(
@@ -40,7 +43,6 @@ def crawl_iclr_2021(pdf_path):
         username='',
         password=''
     )
-
     download_iclr21(client, pdf_path)
 
 

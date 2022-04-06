@@ -38,19 +38,15 @@ def make_save_data_set(image_path, dataset_file_name):
     print("save data sets")
 
 
-import os
-import openreview
-
 if __name__ == '__main__':
     pdf_path = "../dataset/pdf/iclr21/"
     image_path = "../dataset/image/iclr21/"
     dataset_file_name = 'dataset.pt'
 
-
     # crawl_iclr_2021(pdf_path)
 
-    # convert_pdf_to_img(pdf_path, image_path)
+    convert_pdf_to_img(pdf_path, image_path)
 
-    # make_save_data_set(image_path, dataset_file_name)
+    make_save_data_set(image_path, dataset_file_name)
 
     # data_set_usage_ex(dataset_file_name)
