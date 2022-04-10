@@ -19,7 +19,7 @@ def crawl_iclr(pdf_path, year):
 
     # Get submission lists
     submissions = openreview.tools.iterget_notes(
-        client, invitation=f'NeurIPS.cc/{year}/Conference/-/Blind_Submission') # NeurIPS.cc/2021/Conference/-/Blind_Submission
+        client, invitation=f'ICLR.cc/{year}/Conference/-/Blind_Submission')
     submissions_by_forum = {n.forum: n for n in submissions}
     print(f"number of forums: {submissions_by_forum.__len__()}")
 
@@ -33,15 +33,13 @@ def crawl_iclr(pdf_path, year):
     2021: 2769, 2763
     '''
 
-    #if year == "2019":
-    reviews1 = openreview.tools.iterget_notes(
-        client, invitation=f'NeurIPS.cc/{year}/Conference/-/Paper.*/Official_Comment')
-    print(f"number of reviews1: {reviews1.__sizeof__()}")
-    #else:
-    reviews2 = openreview.tools.iterget_notes(
-        client, invitation=f'NeurIPS.cc/{year}/Conference/Paper.*/-/Official_Comment')
-    print(f"number of reviews2: {reviews2.__sizeof__()}")
-    '''
+    if year == "2019":
+        reviews = openreview.tools.iterget_notes(
+            client, invitation=f'ICLR.cc/{year}/Conference/-/Paper.*/Official_Review')
+    else:
+        reviews = openreview.tools.iterget_notes(
+            client, invitation=f'ICLR.cc/{year}/Conference/Paper.*/-/Official_Review')
+
     reviews_by_forum = defaultdict(list)
     for review in reviews:
         reviews_by_forum[review.forum].append(review)
@@ -78,7 +76,7 @@ def crawl_iclr(pdf_path, year):
                 file_handle.write(pdf_binary)
         except:
             print(f"[error][crawl pdf][iclr {year}] forum: {forum_metadata['forum']}")
-'''
+
 
 class Crawler:
     def __init__(self):
