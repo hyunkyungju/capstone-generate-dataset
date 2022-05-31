@@ -8,7 +8,7 @@ def convert_pdf_to_img(input_path, output_path):
     print("start convert from pdf to img")
     print("input path: ", input_path)
     input_files = os.listdir(input_path)
-    os.makedirs(output_path)
+    # os.makedirs(output_path)
     for input_file in tqdm(input_files, desc="convert pdf -> image"):
         try:
             os.mkdir(output_path + input_file[:-4] + "/")
