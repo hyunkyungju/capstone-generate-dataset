@@ -38,5 +38,6 @@ class PaperDataSet(Dataset):
         img = Image.open(image_path)
         if self.transform is not None:
             img = self.transform(img)
+            print("img shape:", img.shape)
 
         return img, label
