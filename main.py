@@ -1,64 +1,28 @@
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import cv2
+import os
 
-import torch
-from torch.utils.data import DataLoader
-
-from torchvision import transforms
-import openreview
-from Converter import convert_pdf_to_img
-from Crawler import crawl_iclr
-from paper_data_set import PaperDataSet
-import torchvision
-
-def data_set_usage_ex(dataset_file_name):
-
-    dataloader = DataLoader(dataset=torch.load(dataset_file_name),
-                           batch_size=1,
-                            shuffle=False,
-                            drop_last=False)
-
-    for epoch in range(1):
-        print(f"epoch: {epoch}")
-        for batch in dataloader:
-            img, label = batch
-            print(label)
-
-
-def make_save_data_set(image_path, dataset_file_name):
-    print("start to make data set")
-    transform = transforms.Compose([
-        transforms.Resize((224, 224)),
-        transforms.ToTensor(),
-        # transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-    ])
-
-    dataset = PaperDataSet(image_path, transform=transform)
-    print(f"data set length: {dataset.__len__()}")
-
-    torch.save(dataset, dataset_file_name)
-    print("save data sets")
-
+from ImageToBinaryConverter_Split12 import image_to_binary_split
 
 if __name__ == '__main__':
-    # pdf_path = "../dataset/pdf/"
-    # image_path = "../dataset/image/"
-    # dataset_file_name = 'dataset-iclr-3years.pt'
+    # image_to_binary("../dataset/test/image/occlusion/", "../dataset/test/binary/occlusion/")
+    # count_image_all_pdf()
+    # draw_scatter()
+    # random_generator()
+    # make_compare()
+    #image_to_binary_cut("../dataset/image/iclr2021/", "../dataset/binary/iclr2021_cut/")
+    #image_cut("../dataset/image/iclr2021/", "../dataset/image/test/")
+    # check_all_cut("../dataset/image/iclr2021/")
+    image_to_binary_split("../dataset/image/iclr2021/", "../dataset/binary/iclr2021_split/")
 
-    # client = openreview.Client(
-    #     baseurl='https://api.openreview.net',
-    #     username='',
-    #     password=''
-    # )
 
-    # years = ["2021", "2020", "2019"]
-    # for year in years:
-        # crawl_iclr(pdf_path, year)
-        # convert_pdf_to_img(pdf_path+"iclr"+year+"/", image_path+"iclr"+year+"/")
+    # binary_to_image()
+    # crawl_iclr("../dataset/pdf/", "2021")
+    # convert_pdf_to_img("../dataset/pdf/iclr2021/", "../dataset/image/iclr2021/")
 
-    image_path = "./image/"
-    dataset_file_name = 'dataset-iclr-2021.pt'
+    # image_to_binary("../dataset/image/iclr2021/", "../dataset/binary/iclr2021/")
+    # make_save_data_set("../dataset/binary/", "dataset.pt")
+    # data_set_usage_ex("dataset.pt")
 
-    make_save_data_set(image_path, dataset_file_name) # 한번만 실행하시고 주석처리해주세요.
 
-    data_set_usage_ex(dataset_file_name)
+
+
