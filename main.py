@@ -2,6 +2,7 @@ import cv2
 import os
 
 from ImageToBinaryConverter_Split12 import image_to_binary_split
+from MakeCompareScore import make_compare
 
 if __name__ == '__main__':
     # image_to_binary("../dataset/test/image/occlusion/", "../dataset/test/binary/occlusion/")
@@ -12,8 +13,9 @@ if __name__ == '__main__':
     #image_to_binary_cut("../dataset/image/iclr2021/", "../dataset/binary/iclr2021_cut/")
     #image_cut("../dataset/image/iclr2021/", "../dataset/image/test/")
     # check_all_cut("../dataset/image/iclr2021/")
-    image_to_binary_split("../dataset/image/iclr2021/", "../dataset/binary/iclr2021_split/")
+    # image_to_binary_split("../dataset/image/iclr2021/", "../dataset/binary/iclr2021_split/")
 
+    make_compare();
 
     # binary_to_image()
     # crawl_iclr("../dataset/pdf/", "2021")

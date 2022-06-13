@@ -4,11 +4,12 @@ import jsonlines
 
 def make_compare():
     lst = list()
-    with jsonlines.open("iclr2021_metadata.jsonl") as read_file:
+    with jsonlines.open("data/rating-data/iclr2021_metadata.jsonl") as read_file:
         for line in read_file.iter():
             lst.append(float(line['rating']))
 
     avg = sum(lst)/len(lst)
+    print("avg:", avg)
 
     diff_list = list()
 

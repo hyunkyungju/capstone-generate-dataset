@@ -4,7 +4,7 @@ import pandas as pd
 
 def make_df():
     rating_dict = {}
-    with jsonlines.open("iclr2021_metadata.jsonl") as read_file:
+    with jsonlines.open("data/rating-data/iclr2021_metadata.jsonl") as read_file:
         for line in read_file.iter():
             rating_dict[line['forum']] = line['rating']
 
