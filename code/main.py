@@ -1,7 +1,7 @@
 import cv2
 import os
 
-from ImageToBinaryConverter_Split12 import image_to_binary_split
+from code.ImageToBinaryConverter_Split12 import image_to_binary_split
 from MakeCompareScore import make_compare
 
 if __name__ == '__main__':

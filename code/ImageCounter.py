@@ -39,7 +39,7 @@ def count_image_by_text(file_path):
     return 0
 
 def count_image_all_pdf():
-    input_path = "../dataset/pdf/iclr2021/"
+    input_path = "../../dataset/pdf/iclr2021/"
     input_files = os.listdir(input_path)
     metadata = []
     for input_file in tqdm(input_files, desc="Count number of Images"):
@@ -55,7 +55,7 @@ def count_image_all_pdf():
             print(f"[error] pdf: {pdf}")
 
     print('writing metadata to file')
-    with open(os.path.join("./", f'cnt.jsonl'), 'w') as file_handle:
+    with open(os.path.join("../", f'cnt.jsonl'), 'w') as file_handle:
         for pdf_metadata in metadata:
             file_handle.write(json.dumps(pdf_metadata) + '\n')
 

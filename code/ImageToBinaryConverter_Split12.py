@@ -14,7 +14,7 @@ def image_to_binary_split(input_path, output_path):
             path = input_path+input_folder+"/"+str(i)+".jpg"
             img_cv = cv2.imread(path)
             if img_cv is None:
-                img_cv = cv2.imread("white.jpg")
+                img_cv = cv2.imread("../white.jpg")
             img_cv = img_cv[160:, :]
             h, w, _ = img_cv.shape
             h_split = h//row
