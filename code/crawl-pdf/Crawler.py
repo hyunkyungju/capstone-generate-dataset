@@ -61,7 +61,7 @@ def crawl_iclr(pdf_path, year):
         metadata.append(forum_metadata)
 
     print('writing metadata to file')
-    with open(os.path.join("../", f'iclr{year}_metadata.jsonl'), 'w') as file_handle:
+    with open(os.path.join("../../", f'iclr{year}_metadata.jsonl'), 'w') as file_handle:
         for forum_metadata in metadata:
             file_handle.write(json.dumps(forum_metadata) + '\n')
 
@@ -72,7 +72,7 @@ def crawl_iclr(pdf_path, year):
         try:
             pdf_binary = client.get_pdf(forum_metadata['forum'])
             pdf_outfile = os.path.join(outdir, '{}.pdf'.format(forum_metadata['forum']))
-            with open('../output.pdf', 'wb') as op:
+            with open('../../output.pdf', 'wb') as op:
                 op.write(pdf_binary)
             with open(pdf_outfile, 'wb') as file_handle:
                 file_handle.write(pdf_binary)

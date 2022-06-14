@@ -12,7 +12,7 @@ def image_to_binary(input_path, output_path):
             path = input_path+input_folder+"/"+str(i+1)+".jpg"
             img_cv = cv2.imread(path)
             if img_cv is None:
-                img_cv = cv2.imread("../white.jpg")
+                img_cv = cv2.imread("../../white.jpg")
             resized_cv = cv2.resize(img_cv, dsize=(224, 224), interpolation=cv2.INTER_AREA)
             binary_cv = cv2.imencode('.PNG', resized_cv)[1].tobytes()
             binary_file = f'{output_folder}/{i + 1}.bin'
@@ -23,7 +23,7 @@ def image_to_binary(input_path, output_path):
 
 
 def binary_to_image():
-    binary_file = "../test.bin"
+    binary_file = "../../test.bin"
     with open(binary_file, 'rb') as f:
         data = f.read()
     encoded_img = np.fromstring(data, dtype=np.uint8)
