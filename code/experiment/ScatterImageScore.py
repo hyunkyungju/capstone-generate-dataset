@@ -4,13 +4,13 @@ import pandas as pd
 
 def make_df():
     rating_dict = {}
-    with jsonlines.open("../data/rating-data/iclr2021_metadata.jsonl") as read_file:
+    with jsonlines.open("../../data/rating-data/iclr2021_metadata.jsonl") as read_file:
         for line in read_file.iter():
             rating_dict[line['forum']] = line['rating']
 
 
     img_dict = {}
-    with jsonlines.open("../cnt.jsonl") as read_file:
+    with jsonlines.open("../../cnt.jsonl") as read_file:
         for line in read_file.iter():
             img_dict[line['forum']] = line['cnt']
 

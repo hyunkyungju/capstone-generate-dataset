@@ -4,7 +4,7 @@ import jsonlines
 
 def make_compare():
     lst = list()
-    with jsonlines.open("../data/rating-data/iclr2021_metadata.jsonl") as read_file:
+    with jsonlines.open("../../data/rating-data/iclr2021_metadata.jsonl") as read_file:
         for line in read_file.iter():
             lst.append(float(line['rating']))
 
